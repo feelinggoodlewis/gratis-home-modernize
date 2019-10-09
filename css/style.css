@@ -309,12 +309,12 @@ button {
 }
 
 /*form*/
-.form-control {
+/* .form-control {
    border: 1px solid #f9f9f9;
    border-radius: 4px;
    height: 35px;
    box-shadow: none;
-}
+} */
 
 .form-control:focus {
    outline: none;
@@ -423,6 +423,14 @@ img {
    background: #000 !important;
 }
 
+.bg-offwhite {
+   background: #eee;
+}
+
+.bg-newcolor {
+   background: #051628;
+}
+
 /*text color*/
 .white-text {
    color: #fff !important;
@@ -438,6 +446,10 @@ img {
 
 .drk-text {
    color: #000 !important
+}
+
+.newcolor-text {
+   color: #051628 !important
 }
 
 /*margin, padding*/
@@ -1045,7 +1057,8 @@ SECTION MARGIN
    margin-left: auto;
    position: relative;
    margin-top: 20px;
-   letter-spacing: 1.5px
+   letter-spacing: 1.5px;
+   font-size: 14px;
 }
 
 
@@ -1201,22 +1214,19 @@ SECTION MARGIN
 
 .hero-content {
    position: relative;
-   /* display: table-cell; */
-   /* vertical-align: middle; */
    z-index: 200;
-
    background: rgba(255, 255, 255, 0.884);
-   border: 1px solid #ff2a22;
-
+   padding-bottom: .4rem
 }
 
 .hero-content h1 {
    font-size: 50px;
    line-height: 80px;
-   color: #fff;
+   color: #eee;
    margin-bottom: 0;
    font-weight: 700;
-   background: rgba(0, 0, 0, 0.89) !important;
+   background: #2e6da4 !important;
+   border: 1px solid #eee;
    padding: 20px;
 }
 
@@ -2530,8 +2540,11 @@ SECTION MARGIN
    height: 100%;
    content: "";
    z-index: -1;
-   background: #000;
+   /* background: #000;
    opacity: 0.8;
+    */
+   background: #2e6da9;
+   opacity: 0.9;
 }
 
 .download-app-img {
@@ -2539,6 +2552,7 @@ SECTION MARGIN
 }
 
 .download-app-text h3,
+.download-app-text h4,
 .download-app-text p {
    color: #fff;
 }
@@ -2837,7 +2851,8 @@ SECTION MARGIN
 #toTop span {
    display: block;
    position: relative;
-   background: #ff2a22;
+   background: #337ab7;
+   /* background: #ff2a22; */
    padding: 5px 12px;
    -webkit-transform: rotate(180deg);
    -moz-transform: rotate(180deg);
@@ -2896,6 +2911,83 @@ SECTION MARGIN
    display: none
 }
 
+
+
+label {
+   display: block
+}
+
+.error {
+   color: #ff3500;
+   background: #eee;
+}
+
+.form-control {
+   border: 1px solid #f9f9f9;
+   border-radius: 4px;
+   height: 50px;
+   box-shadow: none;
+}
+
+p.form-control:hover {
+   border: 1px solid #18507f;
+   cursor: pointer;
+}
+
+p.form-control {
+   padding: 10px 20px;
+}
+
+.form-control span {
+   font-size: 22px !important
+}
+
+input[type=radio] {
+   height: 16px;
+   width: 16px;
+   border-radius: 20px !important;
+   margin-right: 10px;
+   background: #f1f1f1;
+   border: #ff2a22 solid 1px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   outline: none;
+   transition: all 0.4s ease-in-out;
+}
+
+input[type="radio"]:hover,
+input[type="radio"]:hover {
+   border-color: #ff2a22;
+}
+
+input[type="radio"]:checked {
+   background: white;
+   background: url("../img/products/radio.png");
+   background-size: cover;
+   border-color: #ff2a22;
+   outline: none;
+   border: none
+}
+
+input[type="radio"]:checked+span {
+   color: #000;
+}
+
+.navbar.navbar-default {
+   background: transparent;
+   position: absolute;
+   z-index: 111;
+   border: none;
+   width: 100%
+}
+
+@media(max-width:1200px) {
+   .hero-content h1 {
+      font-size: 40px !important;
+      line-height: 55px;
+   }
+}
+
 @media(max-width:991px) {
    .design-gallery {
       justify-content: center;
@@ -2904,5 +2996,18 @@ SECTION MARGIN
 
    .download-app-button {
       text-align: center;
+   }
+}
+
+@media (min-width: 768px) {
+   .section-hero {
+      max-height: 550px;
+   }
+
+   .navbar .nav.navbar-nav li a,
+   .navbar .nav.navbar-nav.navbar-right li a {
+      padding: 7px 10px;
+      margin-right: 1rem;
+      background: #0005
    }
 }
