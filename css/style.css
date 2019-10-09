@@ -408,7 +408,7 @@ img {
 
 /*section bg*/
 .bg-secondary {
-   background: #f9f9f9 !important;
+   background: #eee !important;
 }
 
 .bg-white {
@@ -431,6 +431,10 @@ img {
    background: #051628;
 }
 
+.bg-blue {
+   background: #b6d1ce;
+}
+
 /*text color*/
 .white-text {
    color: #fff !important;
@@ -450,6 +454,13 @@ img {
 
 .newcolor-text {
    color: #051628 !important
+}
+
+.qtcolor-text {
+   color: #163269;
+   font-size: 107%;
+   margin-bottom: .8rem;
+   font-weight: bold
 }
 
 /*margin, padding*/
@@ -1208,7 +1219,7 @@ SECTION MARGIN
 /*hero new style*/
 .hero-content-wrap {
    display: table;
-   height: 550px;
+   /* height: 550px; */
    width: 100%;
 }
 
@@ -2851,7 +2862,7 @@ SECTION MARGIN
 #toTop span {
    display: block;
    position: relative;
-   background: #337ab7;
+   background: #d9534f;
    /* background: #ff2a22; */
    padding: 5px 12px;
    -webkit-transform: rotate(180deg);
@@ -2925,7 +2936,8 @@ label {
 .form-control {
    border: 1px solid #f9f9f9;
    border-radius: 4px;
-   height: 50px;
+   height: 40px;
+   color: #163269;
    box-shadow: none;
 }
 
@@ -2935,11 +2947,13 @@ p.form-control:hover {
 }
 
 p.form-control {
-   padding: 10px 20px;
+   padding: 8px 20px;
+   margin-bottom: 1rem
 }
 
 .form-control span {
-   font-size: 22px !important
+   font-size: 16.6px !important;
+   vertical-align: top
 }
 
 input[type=radio] {
@@ -2948,7 +2962,7 @@ input[type=radio] {
    border-radius: 20px !important;
    margin-right: 10px;
    background: #f1f1f1;
-   border: #ff2a22 solid 1px;
+   border: #163269 solid 1px;
    -webkit-appearance: none;
    -moz-appearance: none;
    outline: none;
@@ -2957,14 +2971,14 @@ input[type=radio] {
 
 input[type="radio"]:hover,
 input[type="radio"]:hover {
-   border-color: #ff2a22;
+   border-color: #163269;
 }
 
 input[type="radio"]:checked {
    background: white;
    background: url("../img/products/radio.png");
    background-size: cover;
-   border-color: #ff2a22;
+   border-color: #163269;
    outline: none;
    border: none
 }
@@ -2979,6 +2993,68 @@ input[type="radio"]:checked+span {
    z-index: 111;
    border: none;
    width: 100%
+}
+
+form {
+   /* padding: 2rem 0; */
+   width: 50%;
+   background: #fff9;
+   margin: auto
+      /* border: 2px solid #eee */
+}
+
+fieldset {
+   display: block;
+   width: 100%;
+   margin: auto;
+}
+
+fieldset h5 {
+   text-align: center
+}
+
+fieldset .content-area {
+   padding: 2rem
+}
+
+._progress {
+   display: flex;
+   margin-top: 3rem;
+   padding: 1rem
+}
+
+._progress div {
+   height: 40px;
+   min-width: 40px;
+   background: #eee;
+   border-radius: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+._progress hr {
+   border: 1px solid #eee;
+   width: 100%
+}
+
+._progress hr.active {
+   border-color: #d9534f
+}
+
+.mactive {
+   background: #d9534f !important;
+   color: #eee
+}
+
+.btn-action {
+   width: 100%;
+   font-size: 20px;
+   font-weight: bold;
+   padding: 1rem 0;
+   background: #c9302c;
+   color: #fff;
 }
 
 @media(max-width:1200px) {

@@ -244,6 +244,143 @@ jQuery(function ($) {
       $('.inside-page').addClass('d-none')
       $('#home_page').removeClass('d-none')
    })
+   // when the get quote btn is cliked
+   $('.quote_click').on('click', (e) => {
+      var target = $('.quote_click').filter(e.target).attr('text')
+      switch (target) {
+         case 'hvac':
+            $('#qt-content').html(HvaQt)
+            break;
+         case 'roof':
+            $('#qt-content').html(roofQt)
+            break;
+         default:
+            $('#qt-content').html(windowQts)
+      }
+      $('.inside-page').addClass('d-none')
+      $('#quote_form').removeClass('d-none')
+      $('html,body').animate({ scrollTop: $('#quote_form').offset().top - 100 }, 400)
+   })
 
+   $('body').on('click', '#next-btn', (e) => {
+      e.preventDefault()
+      $('#fieldset_one').addClass('d-none')
+      $('#fieldset_two').removeClass('d-none')
+   })
+
+
+
+
+   const windowQts = ` <p class="qtcolor-text">What is the nature of your windows project?</p>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature"
+            value="Install New Window(s)">
+         <span>Install New Window(s)</span>
+      </p>
+   </label>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature"
+            value="Repair Existing Window(s)">
+         <span>Repair Existing Window(s)</span>
+      </p>
+   </label>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature" value="Replacing Unit">
+         <span>Replacing Unit</span>
+      </p>
+   </label>
+</div>
+<div class="mt-30">
+   <p class="qtcolor-text">How many windows does this project involve?</p>
+   <select name="window_numbers" id="" class="form-control">
+      <option>Select</option>
+      <option>1 Window</option>
+      <option>2 Windows</option>
+      <option>3 to 5 Windows</option>
+      <option>6 to 9 Windows</option>
+      <option>10+ Windows</option>
+   </select>
+</div>
+<div class="mt-30">
+<p class="qtcolor-text">Additional Comment</p>
+<textarea name="additiona_comments" class="form-control" rows="5"></textarea>
+</div>
+<div class="mt-30">
+<button class="btn-action" id="next-btn">Next</button>
+</div>`
+
+   const HvaQt = `<p class="qtcolor-text">What is the nature of your HVAC project?</p>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature"
+            value="Install New Window(s)">
+         <span>Install New Unit</span>
+      </p>
+   </label>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature"
+            value="Repair Existing Window(s)">
+         <span>Repair Existing Unit</span>
+      </p>
+   </label>
+</div>
+<div class="mt-30">
+   <p class="qtcolor-text">How many windows does this project involve?</p>
+   <select name="window_numbers" id="" class="form-control">
+      <option>Select</option>
+      <option>Boiler</option>
+      <option>Central Air Cooler</option>
+      <option>Central Air Heater</option>
+      <option>Furnace</option>
+      <option>Heat Pump</option>
+      <option>Water Heater</option>
+   </select>
+</div>
+<div class="mt-30">
+<p class="qtcolor-text">Additional Comment</p>
+<textarea name="additiona_comments" class="form-control" rows="5"></textarea>
+</div>
+<div class="mt-30">
+<button class="btn-action" id="next-btn">Next</button>
+</div>`
+
+   const roofQt = `<p class="qtcolor-text">What is the nature of your Roof project?</p>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature"
+            value="Install New Window(s)">
+         <span>Install New Roof</span>
+      </p>
+   </label>
+   <label>
+      <p class="form-control">
+         <input class="move_next" type="radio" name="window_nature"
+            value="Repair Existing Window(s)">
+         <span>Repair Existing Roof</span>
+      </p>
+   </label>
+</div>
+<div class="mt-30">
+   <p class="qtcolor-text">How many windows does this project involve?</p>
+   <select name="window_numbers" id="" class="form-control">
+      <option>Select</option>
+      <option>Asphalt Shingle</option>
+      <option>Wood Shake</option>
+      <option>Metal</option>
+      <option>Flate Roof</option>
+      <option>Natural Slate</option>
+   </select>
+</div>
+<div class="mt-30">
+<p class="qtcolor-text">Additional Comment</p>
+<textarea name="additiona_comments" class="form-control" rows="5"></textarea>
+</div>
+<div class="mt-30">
+<button class="btn-action" id="next-btn">Next</button>
+</div>`
 
 }); // JQuery end
