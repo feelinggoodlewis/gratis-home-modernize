@@ -234,6 +234,25 @@ jQuery(function ($) {
       mainClass: 'my-mfp-slide-bottom'
 
    });
+   $('#next-btn').on('click', (e) => {
+      e.preventDefault()
+      let selector = '.resp'
+      var homeOwner = $("input[name='cust_field_65']").is(':checked')
+      let projectType = $('#project_type').val()
+      let projectNature = $('#project_nature').val()
+      if (!homeOwner) {
+         return displayError('Home owner not selected', selector)
+      }
+      if (projectType === '') {
+         return displayError('Project type is required', selector)
+      }
+      if (projectNature === '') {
+         return displayError('Project nature is required', selector)
+      }
+      displayError('', selector)
+      $('#fieldset_one').addClass('d-none')
+      $('#fieldset_two').removeClass('d-none')
+   })
    // when the about use is clicked
    $('.about_us').on('click', function () {
       $('.inside-page').addClass('d-none')
@@ -248,139 +267,198 @@ jQuery(function ($) {
    $('.quote_click').on('click', (e) => {
       var target = $('.quote_click').filter(e.target).attr('text')
       switch (target) {
-         case 'hvac':
-            $('#qt-content').html(HvaQt)
-            break;
          case 'roof':
-            $('#qt-content').html(roofQt)
+            $('#project_type').val('roof')
+            displayProjectNature(roofNature)
+            break;
+         case 'basement':
+            $('#project_type').val('basement')
+            displayProjectNature(basementNature)
+            break;
+         case 'hvac':
+            $('#project_type').val('hvac')
+            displayProjectNature(hvacNature)
             break;
          default:
-            $('#qt-content').html(windowQts)
+            $('#project_type').val('window')
+            displayProjectNature(windowNature)
       }
       $('.inside-page').addClass('d-none')
       $('#quote_form').removeClass('d-none')
       $('html,body').animate({ scrollTop: $('#quote_form').offset().top - 100 }, 400)
    })
-
-   $('body').on('click', '#next-btn', (e) => {
+   // when the get quote btn is cliked
+   $('#project_type').on('change', (e) => {
+      var target = $('#project_type').val()
+      switch (target) {
+         case 'roof':
+            displayProjectNature(roofNature)
+            break;
+         case 'window':
+            displayProjectNature(windowNature)
+            break;
+         case 'basement':
+            displayProjectNature(basementNature)
+            break;
+         case 'hvac':
+            displayProjectNature(hvacNature)
+            break;
+         default:
+            displayProjectNature()
+         // do thing
+      }
+   })
+   // Processing Submit btn
+   $('#submit_form').on('click', async (e) => {
       e.preventDefault()
-      $('#fieldset_one').addClass('d-none')
-      $('#fieldset_two').removeClass('d-none')
+      let firstName = $('#first_name').val()
+      let lastName = $('#last_name').val()
+      let email = $('#email').val()
+      let addr = $('#address').val()
+      let zip = $('#zip').val()
+      let phone = $('#phone').val()
+      let checkBox = $('#leadid_tcpa_disclosure').prop('checked')
+      let selector = '.response-message'
+      let leadID = $('#leadid_token').val()
+
+      if (firstName === '') {
+         return displayError('First Name is required', selector)
+      }
+
+      if (lastName === '') {
+         return displayError('Last Name is required', selector)
+      }
+
+      if (email === '') {
+         return displayError('Email is required', selector)
+      }
+
+      if (addr === '') {
+         return displayError('Address is required', selector)
+      }
+
+      if (zip === '') {
+         return displayError('Zip Code is required', selector)
+      }
+
+      if (phone === '') {
+         return displayError('Phone is required', selector)
+      }
+
+      // check pattern
+      if (!/^[a-z]+$/i.test(firstName.trim()) || !/^[a-z]+$/i.test(lastName.trim())) {
+         return displayError('Sorry, only alphabets are allowed for names', selector)
+      }
+      if (!email.includes('.') || !email.includes('@')) {
+         return displayError('Invalid email', selector)
+      }
+      phone = phone.match(/\d/g).join('')
+      // check phone number length
+      if (phone.length !== 10) {
+         return displayError('Phone must be 10 digit', selector)
+      }
+      // check if the TCPA text is accepted
+      if (!checkBox) {
+         return displayError('You have to accept the terms and conditions', selector)
+      }
+      displayError('', selector)
+      // get the IP Address of the user
+      let userIp = await $.getJSON('https://api.ipify.org?format=jsonp&callback=?')
+      var productForm = `cust_field_71=${leadID}&apikey=CC4OXBZAK5S1VIL2EK1G&list_id=1594&ip=${userIp.ip}&country=US&phone=${phone}&offer=${location.href}&${$('#project_form').serialize()}`
+      let url = `https://gratisdigital.listflex.com/lmadmin/api/leadimport.php?${productForm}`
+
+      $.ajax({
+         type: "GET",
+         url
+      })
+         .done(function (data) {
+            console.log(data)
+         })
+         .fail(function (jqXHr, textStatus, errorThrown) {
+            console.log(textStatus)
+         })
+         .always(function () {
+            //console.log('Always');
+            $('#signupButton').removeAttr('disabled');
+         });
    })
 
+   // masking the phone number
+   $('#phone').on('keyup', (e) => {
+      var num = e.target.value
+      if (num !== '' && e.keyCode !== 8) {
+         var corretnum = num.match(/\d/g).join('')
+         if (corretnum.length > 5) {
+            var number = `(${corretnum.substr(0, 3)})-${corretnum.substr(3, 3)}-${corretnum.substr(6)}`
+         } else if (corretnum.length >= 3) {
+            var number = `(${corretnum.substr(0, 3)})-${corretnum.substr(3, 3)}`
+         } else {
+            var number = corretnum
+         }
+         e.target.value = number
+      }
+   })
 
+   // do zip lookup
+   $('#zip').on('change', () => {
+      var zipcode = $('#zip').val();
+      $.ajax({
+         type: "GET",
+         url: 'https://api.zippopotam.us/us/' + zipcode,
+         dataType: 'json',
+         beforeSend: function () {
+            // $('#').text('Validation zip...')
+         }
+      })
+         .done(function (data) {
+            $('#submit_form').prop('disabled', false)
+            $('.zip-report').removeClass('error').text('');
+         })
+         .fail(function (jqXHr, textStatus, errorThrown) {
+            $('.zip-report').addClass('error').text('Invalid zip code');
+            $('#submit_form').prop('disabled', true)
+         })
+         .always(function () {
+            //console.log( "complete" );
+         });
+   })
 
+   // To display error on on form validation
+   const displayError = (message, selector) => {
+      if (message === '') {
+         $(selector).removeClass('error')
+      } else {
+         $(selector).addClass('error')
+         $('html,body').animate({ scrollTop: $(selector).offset().top - 30 }, 500)
+      }
+      $(selector).text(message)
+   }
+   // Project types for roof 
+   const roofNature = ['Roof Install - Asphalt Shingle', 'Roof Install - Flat/Single Ply', 'Roof Install - Metal',
+      'Roof Install - Natural Slate', 'Roof Install - Tile', 'Roof Install-Wood Shake/Comp.',
+      'Roof Repair', 'Roof Repair - Asphalt Shingle', 'Roof Repair - Metal', 'Roof Repair - Natural Slate',
+      'Roof Repair - Tile', 'Roof Repair - Wood Shake/Comp.', 'Roof Repair- Flat / SinglePly', 'Roof Replacement',
+      'Roof Replace - Asphalt Shingle', 'Roof Replace - Flat/SinglePly', 'Roof Replace - Metal',
+      'Roof Replace - Natural Slate', 'Roof Replace - Tile', 'Roof Replace - Wood Shake',
+      'Roof Removal', 'Roof Snow Removal', 'Roof Maintenance Or Cleaning', 'Roof Inspection', 'Roofing']
+   // WINDOWS OPTIONS
+   const windowNature = ['Window A/C Unit Service Or Repair',
+      'Window Cleaning', 'Window Frame-Repair', 'Window Glass - Install/Replace',
+      'Window Install - Multiple', 'Window Install - Single', 'Window Repair',
+      'Window Repair - Frame & Glass']
+   // BASEMENT OPTION
+   const basementNature = ['Basement Remodel', 'Basement Water Proofing']
+   // BASEMENT OPTION
+   const hvacNature = ['HVAC']
 
-   const windowQts = ` <p class="qtcolor-text">What is the nature of your windows project?</p>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature"
-            value="Install New Window(s)">
-         <span>Install New Window(s)</span>
-      </p>
-   </label>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature"
-            value="Repair Existing Window(s)">
-         <span>Repair Existing Window(s)</span>
-      </p>
-   </label>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature" value="Replacing Unit">
-         <span>Replacing Unit</span>
-      </p>
-   </label>
-</div>
-<div class="mt-30">
-   <p class="qtcolor-text">How many windows does this project involve?</p>
-   <select name="window_numbers" id="" class="form-control">
-      <option>Select</option>
-      <option>1 Window</option>
-      <option>2 Windows</option>
-      <option>3 to 5 Windows</option>
-      <option>6 to 9 Windows</option>
-      <option>10+ Windows</option>
-   </select>
-</div>
-<div class="mt-30">
-<p class="qtcolor-text">Additional Comment</p>
-<textarea name="additiona_comments" class="form-control" rows="5"></textarea>
-</div>
-<div class="mt-30">
-<button class="btn-action" id="next-btn">Next</button>
-</div>`
-
-   const HvaQt = `<p class="qtcolor-text">What is the nature of your HVAC project?</p>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature"
-            value="Install New Window(s)">
-         <span>Install New Unit</span>
-      </p>
-   </label>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature"
-            value="Repair Existing Window(s)">
-         <span>Repair Existing Unit</span>
-      </p>
-   </label>
-</div>
-<div class="mt-30">
-   <p class="qtcolor-text">How many windows does this project involve?</p>
-   <select name="window_numbers" id="" class="form-control">
-      <option>Select</option>
-      <option>Boiler</option>
-      <option>Central Air Cooler</option>
-      <option>Central Air Heater</option>
-      <option>Furnace</option>
-      <option>Heat Pump</option>
-      <option>Water Heater</option>
-   </select>
-</div>
-<div class="mt-30">
-<p class="qtcolor-text">Additional Comment</p>
-<textarea name="additiona_comments" class="form-control" rows="5"></textarea>
-</div>
-<div class="mt-30">
-<button class="btn-action" id="next-btn">Next</button>
-</div>`
-
-   const roofQt = `<p class="qtcolor-text">What is the nature of your Roof project?</p>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature"
-            value="Install New Window(s)">
-         <span>Install New Roof</span>
-      </p>
-   </label>
-   <label>
-      <p class="form-control">
-         <input class="move_next" type="radio" name="window_nature"
-            value="Repair Existing Window(s)">
-         <span>Repair Existing Roof</span>
-      </p>
-   </label>
-</div>
-<div class="mt-30">
-   <p class="qtcolor-text">How many windows does this project involve?</p>
-   <select name="window_numbers" id="" class="form-control">
-      <option>Select</option>
-      <option>Asphalt Shingle</option>
-      <option>Wood Shake</option>
-      <option>Metal</option>
-      <option>Flate Roof</option>
-      <option>Natural Slate</option>
-   </select>
-</div>
-<div class="mt-30">
-<p class="qtcolor-text">Additional Comment</p>
-<textarea name="additiona_comments" class="form-control" rows="5"></textarea>
-</div>
-<div class="mt-30">
-<button class="btn-action" id="next-btn">Next</button>
-</div>`
-
+   // function to write project nature
+   const displayProjectNature = (project) => {
+      if (project === undefined) {
+         return $('#project_nature').html('<option value="">Select Project Type Above</option>')
+      }
+      $('#project_nature').html('<option value="">Select</option>')
+      for (var i of project) {
+         $('#project_nature').append(`<option>${i}</option>`)
+      }
+   }
 }); // JQuery end
