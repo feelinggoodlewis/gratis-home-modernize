@@ -39,24 +39,10 @@
    <link href="css/responsive.css" rel="stylesheet">
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
    <script src="js/vendor/modernizr-2.8.1.min.js"></script>
-   <!-- HTML5 Shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-   <!--[if lt IE 9]>
-    <script src="js/vendor/html5shim.js"></script>
-    <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 
 <body>
-
-   <!-- Preloader -->
-   <div id="preloader">
-      <div id="loader"></div>
-   </div>
-   <!--end preloader-->
-
    <div id="main" class="main-content-wraper">
       <div class="main-content-inner">
          <!--start header section-->
@@ -111,7 +97,7 @@
                               provide exceptional residential and commercial remodeling and renovation services.
                            </p>
                            <div class="slider-action-btn">
-                              <a href="#impovement-div" class="page-scroll btn btn-font btn-danger">Get
+                              <a href="#" class="quote_click btn btn-font btn-danger">Get
                                  Free Quote</a>
                            </div>
                         </div>
@@ -124,7 +110,7 @@
             </div> -->
          </section>
          <!--new feature start-->
-         <section class="inside-page d-none" id="home_page">
+         <section class="inside-page" id="home_page">
             <section id="features" class="new-features ptb-90">
                <div class="new-features-one">
                   <div class="container">
@@ -142,7 +128,7 @@
                                     <img src="img/img/window.png">
                                  </div>
                               </div>
-                              <div class="feature-content  " data-id="1">
+                              <div class="feature-content" data-id="1">
                                  <h5>WINDOW</h5>
                                  <p class="mb-0">Start by answering a few question about the work you need complete </p>
                                  <button class="btn btn-danger quote_click" text="window">Get Quote</button>
@@ -232,23 +218,22 @@
             </section>
             <section class="bg-newcolor" style="padding: 2rem 0;">
                <div class="container">
-                  <div class="row">
-                     <div class="col-sm-8  col-md-8 col-lg-7 text-white">
+                  <div class="row d-flex">
+                     <div class="col-sm-8 mb-20 col-md-8 col-lg-7 text-white">
                         We are a team of experienced and reliable contractors,
                         and can handle all your renovation needs. We have built a solid reputation with our
                         clients for quality workmanship, and project professionalism.
                      </div>
-                     <div class="col-sm-4 col-md-4 col-lg-5 text-center">
-                        <button class="btn btn-danger btn-font">Get Free Quote</button>
+                     <div class="col-sm-4 col-md-4 col-lg-5 text-center" style="align-self: center;">
+                        <button class="btn btn-danger btn-font quote_click">Get Free Quote</button>
                      </div>
                   </div>
                </div>
             </section>
          </section>
 
-         <!--end download section-->
          <!-- =======================Get Quote Form========================= -->
-         <section class="inside-page bg-secondary" id="quote_form" style="padding:2rem 0">
+         <section class="inside-page d-none bg-secondary" id="quote_form" style="padding:2rem 0">
             <div class="container">
                <form id="project_form" style="background:#2e6da4; border-radius: 10px;">
                   <fieldset class="" id="fieldset_one">
@@ -270,15 +255,17 @@
                         </p>
                         <div>
                            <p class="qtcolor-text">Do you own your home?</p>
-                           <label>
+                           <label for="yes_home_owner">
                               <p class="form-control">
-                                 <input class="move_next" type="radio" name="cust_field_65" value="yes">
+                                 <input class="move_next" type="radio" id="yes_home_owner" name="cust_field_65"
+                                    value="yes">
                                  <span>Yes, I own my home</span>
                               </p>
                            </label>
-                           <label>
+                           <label for="no_home_owner">
                               <p class="form-control">
-                                 <input class="move_next" type="radio" name="cust_field_65" value="no">
+                                 <input class="move_next" type="radio" id="no_home_owner" name="cust_field_65"
+                                    value="no">
                                  <span>No, I rent my home</span>
                               </p>
                            </label>
@@ -306,11 +293,13 @@
                            </div>
                            <div class="mt-30">
                               <input id="leadid_token" name="universal_leadid" type="hidden" value="" />
-                              <button class="btn btn-danger btn-font" id="next-btn" style="width: 100%;">Next</button>
+                              <button type="button" class="btn btn-danger btn-font" id="next-btn"
+                                 style="width: 100%;">Next</button>
                            </div>
                         </div>
                      </div>
                   </fieldset>
+                  <!-- ==========================Set two -=========================== -->
                   <fieldset class="d-none" id="fieldset_two">
                      <div class="_progress">
                         <div class="mactive">
@@ -339,7 +328,7 @@
                                  <input class="form-control" type="text" name="lname" id="last_name" required>
                               </div>
                               <div class="col-sm-6 mb-20">
-                                 <label for="email" class="qtcolor-text">Emial</label>
+                                 <label for="email" class="qtcolor-text">Email</label>
                                  <input class="form-control" type="email" name="email" id="email" required>
                               </div>
                               <div class="col-sm-6 mb-20">
@@ -357,26 +346,71 @@
                                  <input class="form-control" type="tel" name="mobile" maxlength="14" minlength="14"
                                     id="phone" required>
                               </div>
-                           </div>
-                           <div class="col-sm-12">
-                              <label class="text-justify">
-                                 <input type="checkbox" name="" id="leadid_tcpa_disclosure" style="zoom:1.3">
-                                 <span class="tcpatext">
-                                    By clicking Get My Quotes, I agree to the Terms of Service and Privacy Policy and
-                                    authorize window companies, their contractors and partner companies to contact me
-                                    about
-                                    home improvement offers by phone calls and text messages to the number I provided
-                                    above. I authorize that these marketing communications may be delivered to me using
-                                    an
-                                    automatic telephone dialing system or by prerecorded message. I understand that my
-                                    consent is not a condition of purchase and that standard message and data rates may
-                                    apply.
-                                 </span>
+                              <div class="col-sm-12">
+                                 <label class="text-justify">
+                                    <input type="checkbox" name="" id="leadid_tcpa_disclosure" style="zoom:1.3">
+                                    <span class="tcpatext">
+                                       By clicking Get My Quotes, I agree to the Terms of Service and Privacy Policy and
+                                       authorize window companies, their contractors and partner companies to contact me
+                                       about
+                                       home improvement offers by phone calls and text messages to the number I provided
+                                       above. I authorize that these marketing communications may be delivered to me
+                                       using
+                                       an
+                                       automatic telephone dialing system or by prerecorded message. I understand that
+                                       my
+                                       consent is not a condition of purchase and that standard message and data rates
+                                       may
+                                       apply.
+                                    </span>
+                              </div>
                            </div>
                            <div class="mt-30">
-                              <button class="btn-action btn-font btn-danger" id="submit_form" style="width: 100%;"
-                                 disabled>Get
+                              <button type="submit" class="btn btn-font btn-danger" id="submit_form"
+                                 style="width: 100%;" disabled>Get
                                  Quote</button>
+                              <div id="preloader" class="text-center btn-danger d-none">
+                                 <div id="loader"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </fieldset>
+                  <!-- ==================== Final Screen ===================== -->
+                  <fieldset class="d-none" id="fieldset_three">
+                     <div class="_progress">
+                        <div class="mactive">
+                           <span>1</span>
+                        </div>
+                        <hr class="active">
+                        <div class="mactive">
+                           <span>2</span>
+                        </div>
+                        <hr class="active">
+                        <div class="mactive">
+                           <span>3</span>
+                        </div>
+                     </div>
+                     <div class="content-area bg-blue mt-40">
+                        <div class="row">
+                           <!-- ===================Success Resposne=================== -->
+                           <div class="col-12 d-none api_response" id="submit_success">
+                              <div class="text-center" id="thanks_for" style="margin-top:10px">
+                                 <h2>THANKS FOR YOUR REQUEST</h2>
+                                 <h4 style="margin:50px auto;">One of our agents will be in touch with you shortly.</h4>
+                              </div>
+                           </div>
+                           <!-- ===================Failure Resposne=================== -->
+                           <div class="col-12 d-none api_response" id="submit_fail">
+                              <div class="text-center" id="thanks_for" style="margin-top:10px">
+                                 <h2>Oops!</h2>
+                                 <h5 style="margin:50px auto;" id="network_fail">Something went wrong with your
+                                    submission, please try
+                                    again.</h5>
+                              </div>
+                              <div class="col-12 text-center">
+                                 <button type="button" class="btn btn-danger" id="try_again_btn">Try Again</button>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -386,16 +420,16 @@
          </section>
 
          <!-- =======================About Us Area ========================= -->
-         <section class="inside-page d-none" id="about_us">
+         <section class="inside-page d-none ptb-40" id="about_us">
             <div class="container">
                <h2>About Us</h2>
-               <p style="line-height:2">
+               <p style="line-height:2;color: #000;">
                   Home Modernize is a leading online portal for homeowners to find and connect with trusted home
                   improvement professionals. We do this by providing content to educate and inspire ideas, as well as
                   by simply connecting you to our network of seasoned home improvement specialists. At
                   Home Modernize, our contractor partners also share our focus in helping customers to not only
-                  improve the look of their home, but also increase the value. Simply fill out the form by <a
-                     href="">clicking
+                  improve the look of their home, but also increase the value. Simply fill out the form by <a href="#"
+                     class="quote_click">clicking
                      here</a> and get multiple competitive quotes from professionals in your area! It is fast and
                   free!
                </p>

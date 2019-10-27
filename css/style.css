@@ -130,17 +130,6 @@ strong {
    display: table;
 }
 
-/*btn*/
-button {
-   display: inline-block;
-   text-align: center;
-   border-radius: 4px;
-   text-decoration: none;
-   -webkit-transition: opacity .3s ease;
-   transition: opacity .3s ease;
-   border: 1px solid transparent;
-}
-
 .form-control:focus {
    outline: none;
    box-shadow: none;
@@ -148,10 +137,6 @@ button {
 
 .form-group {
    margin-bottom: 20px;
-}
-
-.form-group.submit-btn {
-   margin-bottom: 0;
 }
 
 /*list*/
@@ -670,26 +655,21 @@ SECTION MARGIN
 		14. PRELOADER CSS
 ====================================*/
 #preloader {
-   position: fixed;
+   position: relative;
    top: 0;
    left: 0;
-   width: 100%;
-   height: 100%;
    z-index: 9999;
-   background: #fff;
 }
 
 #loader {
-   display: block;
+   display: inline-block;
    position: relative;
-   left: 50%;
-   top: 50%;
-   width: 80px;
-   height: 80px;
-   margin: -75px 0 0 -75px;
-   border-radius: 50%;
+   width: 60px;
+   height: 60px;
+   border-radius: 50px;
    border: 3px solid transparent;
-   border-top-color: #ff2a22;
+   border-top-color: red;
+   top: 4px;
    -webkit-animation: spin 2s linear infinite;
    animation: spin 2s linear infinite;
 }
@@ -703,7 +683,7 @@ SECTION MARGIN
    bottom: 5px;
    border-radius: 50%;
    border: 3px solid transparent;
-   border-top-color: #8f6ed5;
+   border-top-color: blue;
    -webkit-animation: spin 3s linear infinite;
    animation: spin 3s linear infinite;
 }
@@ -717,7 +697,7 @@ SECTION MARGIN
    bottom: 15px;
    border-radius: 50%;
    border: 3px solid transparent;
-   border-top-color: #d782d9;
+   border-top-color: #eee;
    -webkit-animation: spin 1.5s linear infinite;
    animation: spin 1.5s linear infinite;
 }
@@ -776,17 +756,10 @@ SECTION MARGIN
    -o-transition: all 0.3s ease 0s;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 768px) {
-   #loader {
-      left: 60%;
-   }
-}
-
 #toTop span {
    display: block;
    position: relative;
-   background: #d9534f;
-   /* background: #ff2a22; */
+   background: #c9302c;
    padding: 5px 12px;
    -webkit-transform: rotate(180deg);
    -moz-transform: rotate(180deg);
@@ -913,21 +886,17 @@ fieldset .content-area {
 }
 
 ._progress hr.active {
-   border-color: #d9534f
+   border-color: #c9302c
 }
 
 .mactive {
-   background: #d9534f !important;
+   background: #c9302c !important;
    color: #eee
 }
 
-.btn- .btn-action {
-   width: 100%;
-   font-size: 20px;
-   font-weight: bold;
-   padding: 1rem 0;
+.btn-danger {
    background: #c9302c;
-   color: #fff;
+   outline: none !important;
 }
 
 .middle-section {
@@ -969,6 +938,8 @@ fieldset .content-area {
    vertical-align: top;
    text-align: justify;
 }
+
+
 
 
 
@@ -1053,6 +1024,9 @@ fieldset .content-area {
       background: #0005
    }
 
+   .d-flex {
+      display: flex;
+   }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
@@ -1070,7 +1044,6 @@ fieldset .content-area {
 @media(max-width:1199px) {
    .hero-content h1 {
       font-size: 40px;
-      /* line-height: 55px; */
    }
 
    form {
