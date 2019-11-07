@@ -98,6 +98,8 @@ jQuery(function ($) {
                displayProjectNature(windowNature)
                break;
             default:
+               $('#project_type').val('')
+               $('#project_nature').html('<option value="">Select Project Type Above</option>')
             // do nothing
          }
          $('.inside-page').addClass('d-none')
@@ -225,6 +227,12 @@ jQuery(function ($) {
          $('#fieldset_one').add('#submit_form').removeClass('d-none')
       })
 
+      // going back to the previous fields
+      $('.back_to_one').on('click', () => {
+         $('fieldset').addClass('d-none')
+         $('#fieldset_one').removeClass('d-none')
+      })
+
       // masking the phone number on the phone field
       $('#phone').on('keyup', (e) => {
          var num = e.target.value
@@ -264,6 +272,40 @@ jQuery(function ($) {
                //console.log( "complete" );
             });
       })
+      // making the zipfield on the header accept only number
+      $('#zipfield').on('keyup', (e) => {
+         var num = e.target.value
+         var corretnum = num.match(/\d/g)
+         if (corretnum !== null) {
+            corretnum = corretnum.join('')
+         }
+         e.target.value = corretnum
+      })
+
+      // when the zipcode is entered to find contractors on the header
+      $('#zipfield_btn').on('click', (e) => {
+         e.preventDefault()
+         var zipcode = $('#zipfield').val()
+         $.ajax({
+            type: "GET",
+            url: 'https://api.zippopotam.us/us/' + zipcode,
+            dataType: 'json',
+            beforeSend: function () {
+               $('.ziperror').addClass('error').text('checking zip...')
+            }
+         })
+            .done(function (data) {
+               $('.ziperror').removeClass('error').text('')
+               $('#zip').val(zipcode)
+               $('.quote_click').click()
+            })
+            .fail(function (jqXHr, textStatus, errorThrown) {
+               $('.ziperror').text('Invalid zip code')
+            })
+            .always(function () {
+               //console.log( "complete" );
+            });
+      })
 
       // To display error on on form validation
       const displayError = (message, selector) => {
@@ -291,7 +333,7 @@ jQuery(function ($) {
       // BASEMENT OPTION
       const basementNature = ['Basement Remodel', 'Basement Water Proofing']
       // BASEMENT OPTION
-      const hvacNature = ['HVAC']
+      const hvacNature = ['HVAC', 'Appliances – Install', 'Air Purification Systems']
 
       // function to write project nature
       const displayProjectNature = (project) => {

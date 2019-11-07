@@ -14,31 +14,14 @@
 
    <!-- font-awesome css -->
    <link rel="stylesheet" href="css/font-awesome.min.css">
-
-   <!--themify icon-->
-   <link rel="stylesheet" href="css/themify-icons.css">
-
    <!--flaticon icon-->
    <link rel="stylesheet" href="fonts/flaticon.css">
-
-   <!-- magnific popup css-->
-   <link rel="stylesheet" href="css/magnific-popup.css">
-
-   <!--owl carousel -->
-   <link href="css/owl.theme.default.min.css" rel="stylesheet">
-   <link href="css/owl.carousel.min.css" rel="stylesheet">
-   <!-- <link href="css/animation.css" rel="stylesheet"> -->
-
    <!-- bootstrap core css -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-   <!-- custom css -->
-   <link href="css/style.css" rel="stylesheet">
-
    <!-- responsive css -->
    <link href="css/responsive.css" rel="stylesheet">
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-   <script src="js/vendor/modernizr-2.8.1.min.js"></script>
+   <!-- custom css -->
+   <link href="css/style.css" rel="stylesheet">
 </head>
 
 
@@ -87,9 +70,9 @@
             <!--background circle shape-->
             <div class="container">
                <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-12" style="z-index: 11;">
                      <div class="hero-content-wrap">
-                        <div class="hero-content">
+                        <!-- <div class="hero-content">
                            <h1>Improve Your Home Today</h1>
                            <p>
                               We provide a range of remodeling, renovation, design and construction services.
@@ -100,7 +83,27 @@
                               <a href="#" class="quote_click btn btn-font btn-danger">Get
                                  Free Quote</a>
                            </div>
+                        </div> -->
+                        <div class="hero-content">
+                           <h3 class="text-center">Find Home Improvement Contractors Near You</h3>
+                           <!-- <h5 class="text-center">Enter your Zip</h5> -->
+                           <div style="display: flex; max-width: 300px; margin: 20px auto auto;">
+                              <input type="tel" class="form-control" id="zipfield" minlength="5" maxlength="5"
+                                 placeholder="Enter Zip Code">
+                              <button type="button" class="btn btn-danger" id="zipfield_btn">
+                                 <i class="fa fa-arrow-right"></i>
+                              </button>
+                           </div>
+                           <div class="text-center">
+                              <span class="ziperror"></span>
+                           </div>
                         </div>
+                        <!-- <div style="width: 500px; margin:120px auto auto;">
+                           <h2 class="white-text text-center">
+                              Find Home Improvement
+                              Contractors Near You
+                           </h2>
+                        </div> -->
                      </div>
                   </div>
                </div>
@@ -109,78 +112,120 @@
                <img src="img/waves-shape.svg" alt="shape image">
             </div> -->
          </section>
-         <!--new feature start-->
          <section class="inside-page" id="home_page">
-            <section id="features" class="new-features ptb-90">
+            <section>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-12 mt-20 ptb-40">
+                        <h3 class="text-center">How It Works</h3>
+                     </div>
+                     <div class="col-sm-4 col-lg-4 text-center start-steps">
+                        <img src="./img/started/question.png" class="img-works">
+                        <p>
+                           <h5>Tell us about your project.</h5>
+                           <p>Answer a few questions about your upcoming project, and we will find contractors who can
+                              help.
+                           </p>
+                        </p>
+                     </div>
+                     <div class="col-sm-4 col-lg-4 text-center start-steps">
+                        <img src="./img/started/pair-icon.png" class="img-works">
+                        <p>
+                           <h5>Get a contractor near you</h5>
+                           <p>We get you paired with reliable contractors that will be able to handle you project.
+                           </p>
+                        </p>
+                     </div>
+                     <div class="col-md-4 col-lg-4 text-center start-steps">
+                        <img src="./img/started/work.png" class="img-works">
+                        <p>
+                           <h5>Get your project started</h5>
+                           <p>No matter which part of your home needs renovation, your project starts immediately you
+                              choose the
+                              contractor to handle.
+                           </p>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section id="features" class="new-features ptb-40" style="border: 1px solid #ccc;">
                <div class="new-features-one">
+                  <div class="feature-heading text-center">
+                     <h3>Choose Your Project</h3>
+                  </div>
                   <div class="container">
-                     <div class="row" id="impovement-div">
+                     <div class="row ptb-40" id="impovement-div">
                         <div class="col-sm-12 " data-sequence="200">
-                           <div class="feature-heading text-center">
-                              <h4 style="text-transform:uppercase">What type of improvement are
-                                 you looking for?</h4>
-                           </div>
                            <!--feature single start-->
-                           <div class="col-sm-6 single-feature mtb-5">
-                              <div class="feature-icon">
-                                 <div class="icon icon-shape">
-                                    <!-- <i class="flaticon-cardiogram"></i> -->
-                                    <img src="img/img/window.png">
+                           <div class="col-sm-6 col-md-6 col-lg-3 mtb-5">
+                              <div class="single-feature quote_click" text="window">
+                                 <div class="feature-icon">
+                                    <div class="icon icon-shape">
+                                       <!-- <i class="flaticon-cardiogram"></i> -->
+                                       <img src="img/img/window.png">
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="feature-content" data-id="1">
-                                 <h5>WINDOW</h5>
-                                 <p class="mb-0">Start by answering a few question about the work you need complete </p>
-                                 <button class="btn btn-danger quote_click" text="window">Get Quote</button>
+                                 <div class="feature-content" data-id="1">
+                                    <h5>WINDOW</h5>
+                                    <!-- <p class="mb-0">Start by answering a few question about the work you need complete </p> -->
+                                    <!-- <button class="btn btn-danger quote_click" text="window">Get Quote</button> -->
+                                 </div>
                               </div>
                            </div>
                            <!--feature single end-->
                            <!--feature single start-->
-                           <div class="col-sm-6 single-feature mtb-5">
-                              <div class="feature-icon">
-                                 <div class="icon icon-shape">
-                                    <!-- <i class="flaticon-step"></i> -->
-                                    <img src="img/img/roof.png">
+                           <div class="col-sm-6 col-md-6 col-lg-3 mtb-5">
+                              <div class="single-feature quote_click" text="roof">
+                                 <div class="feature-icon">
+                                    <div class="icon icon-shape">
+                                       <!-- <i class="flaticon-step"></i> -->
+                                       <img src="img/img/roof.png">
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="feature-content  " data-id="2">
-                                 <h5>ROOFING</h5>
-                                 <p class="mb-0">Within hours, you will receive quotes from pros in your area based on
-                                    your need</p>
-                                 <button class="btn btn-danger quote_click" text="roof">Get Quote</button>
+                                 <div class="feature-content  " data-id="2">
+                                    <h5>ROOFING</h5>
+                                    <!-- <p class="mb-0">Within hours, you will receive quotes from pros in your area based on
+                                    your need</p> -->
+                                    <!-- <button class="btn btn-danger quote_click" text="roof">Get Quote</button> -->
+                                 </div>
                               </div>
                            </div>
                            <!--feature single end-->
                            <!--feature single start-->
-                           <div class="col-sm-6 single-feature mtb-5">
-                              <div class="feature-icon">
-                                 <div class="icon icon-shape">
-                                    <!-- <i class="flaticon-volume"></i> -->
-                                    <img src="img/img/hvac.png">
+                           <div class="col-sm-6 col-md-6 col-lg-3 mtb-5">
+                              <div class="single-feature quote_click" text="hvac">
+                                 <div class="feature-icon">
+                                    <div class="icon icon-shape">
+                                       <!-- <i class="flaticon-volume"></i> -->
+                                       <img src="img/img/hvac.png">
+                                    </div>
                                  </div>
-                              </div>
-                              <div class="feature-content">
-                                 <h5>HVAC</h5>
-                                 <p class="mb-0">Compare your quote then choose the best contractor for your windows job
-                                 </p>
-                                 <button class="btn btn-danger quote_click" text="hvac">Get Quote</button>
+                                 <div class="feature-content">
+                                    <h5>HVAC</h5>
+                                    <!-- <p class="mb-0">Compare your quote then choose the best contractor for your windows job
+                                 </p> -->
+                                    <!-- <button class="btn btn-danger quote_click" text="hvac">Get Quote</button> -->
+                                 </div>
                               </div>
                            </div>
                            <!--feature single end-->
                            <!--feature single start-->
-                           <div class="col-sm-6 single-feature mtb-5">
-                              <div class="feature-icon">
-                                 <div class="icon icon-shape">
-                                    <img src="img/img/basement.svg">
+                           <div class="col-sm-6 col-md-6 col-lg-3 mtb-5">
+                              <div class="single-feature quote_click" text="basement">
+                                 <div class="feature-icon">
+                                    <div class="icon icon-shape">
+                                       <img src="img/img/basement.svg">
+                                    </div>
+                                 </div>
+                                 <div class="feature-content" data-id="3">
+                                    <h5>BASEMENT</h5>
+                                    <!-- <p class="mb-0">Compare your quote then choose the best contractor for your windows job -->
+                                    </p>
                                  </div>
                               </div>
-                              <div class="feature-content  " data-id="3">
-                                 <h5>BASEMENT</h5>
-                                 <p class="mb-0">Compare your quote then choose the best contractor for your windows job
-                                 </p>
-                                 <button class="btn btn-danger quote_click" text="basement">Get Quote</button>
-                              </div>
                            </div>
+                           <!-- <input type="hidden" class="quote_click" text="select" /> -->
                            <!--feature single end-->
                         </div>
                         <!-- <div class="col-md-6">
@@ -192,7 +237,7 @@
                   </div>
                </div>
             </section>
-
+            <!-- ReFreshing Look To Your Home -->
             <section style="background-color: #eee;">
                <div class="containersp middle-section">
                   <div class="container">
@@ -302,8 +347,8 @@
                   <!-- ==========================Set two -=========================== -->
                   <fieldset class="d-none" id="fieldset_two">
                      <div class="_progress">
-                        <div class="mactive">
-                           <span>1</span>
+                        <div class="mactive back_to_one">
+                           <span class="back_to_one">1</span>
                         </div>
                         <hr class="active">
                         <div class="mactive">
@@ -466,7 +511,6 @@
             </div>
          </footer>
          <!--end footer section-->
-
       </div>
       <!--end main content inner-->
    </div>
@@ -488,7 +532,6 @@
    <noscript><img
          src='//create.leadid.com/noscript.gif?lac=90e796b0-f1ee-0403-f993-d685e0010cf9&lck=e9c39c65-ce57-57d4-9521-4844abbe7e6d&snippet_version=2' /></noscript>
 
-
    <!--=========== all js file link ==============-->
 
    <!-- main jQuery -->
@@ -496,19 +539,8 @@
 
    <!-- bootstrap core js -->
    <script src="js/bootstrap.min.js"></script>
-   <!-- <script src="js/animation.js"></script> -->
-
-   <!-- smothscroll -->
-   <!-- <script src="js/jquery.easeScroll.min.js"></script> -->
-
-   <!--owl carousel-->
-   <script src="js/owl.carousel.min.js"></script>
-
    <!-- scrolling nav -->
    <script src="js/jquery.easing.min.js"></script>
-
-   <!--magnific popup js-->
-   <script src="js/magnific-popup.min.js"></script>
 
    <!-- custom script -->
    <script src="js/scripts.js"></script>
