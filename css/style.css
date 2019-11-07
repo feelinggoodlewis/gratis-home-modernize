@@ -487,9 +487,10 @@ SECTION MARGIN
    margin-bottom: 40px;
 }
 
+/* 
 .feature-heading h3 {
-   /* font-weight: 300; */
-}
+   font-weight: 300;
+} */
 
 .single-feature {
    align-items: center;
